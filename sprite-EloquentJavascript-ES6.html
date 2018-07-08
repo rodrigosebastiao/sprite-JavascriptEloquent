@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+  From the book Eloquent JavaScript
+  </title>
+  
+</head>
+
+    <body>
+        <h3>
+            <a href="sprite-EloquentJavascript.html">Sprite Vanilla JS</a>
+        </h3>
+        
+        <h1>Sprite ES6 Version</h1>
+        <canvas></canvas>
+
+        <script>
+        let cx = document.querySelector("canvas").getContext("2d");
+        let img = document.createElement("img");
+        img.src = "https://eloquentjavascript.net/img/player_big.png";
+        let spriteW = 24, spriteH = 70;
+        img.addEventListener("load", () => {
+        let cycle = 0;
+        setInterval(() => {
+            cx.clearRect(0, 0, spriteW, spriteH);
+            cx.drawImage(img,
+                        // source rectangle
+                        cycle * spriteW, 0, spriteW+20, spriteH,
+                        // destination rectangle
+                        0,               0, spriteW, spriteH);
+            cycle = (cycle + 4) % 8;
+        }, 1000/7);
+        });
+        </script>
+
+    </body>
+
+</html>
